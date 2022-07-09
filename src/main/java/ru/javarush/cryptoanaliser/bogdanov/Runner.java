@@ -1,12 +1,14 @@
 package ru.javarush.cryptoanaliser.bogdanov;
 
-import ru.javarush.cryptoanaliser.bogdanov.application.Application;
-import ru.javarush.cryptoanaliser.bogdanov.controller.Maincontroller;
+import ru.javarush.cryptoanaliser.bogdanov.toplevel.Application;
+import ru.javarush.cryptoanaliser.bogdanov.controller.MainController;
+import ru.javarush.cryptoanaliser.bogdanov.entity.Result;
 
 public class Runner {
     public static void main(String[] args) {
-        Maincontroller maincontroller = new Maincontroller();
+        MainController maincontroller = new MainController();
         Application application = new Application(maincontroller);
-        Results results = application.run(args);
+        Result results = application.run(args);
+        System.out.println(results.toString());
     }
 }
