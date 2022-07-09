@@ -1,2 +1,5 @@
-package ru.javarush.cryptoanaliser.bogdanov;public class Results {
+package ru.javarush.cryptoanaliser.bogdanov;
+
+public class Results {
+
 }
