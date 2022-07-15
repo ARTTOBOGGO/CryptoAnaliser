@@ -15,8 +15,8 @@ import java.util.regex.Pattern;
 public class Encoder implements Action{
     @Override
     public Result execute(String[] parameters) {
-        Path path = Paths.get(parameters[1]);
-        Path path2 = Paths.get(parameters[0]);
+        Path path = Paths.get(parameters[0]);
+        Path path2 = Paths.get(parameters[1]);
         StringBuilder stringBuilder = new StringBuilder();
         byte[] bytes;
         try {

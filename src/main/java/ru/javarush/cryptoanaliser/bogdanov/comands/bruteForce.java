@@ -18,8 +18,8 @@ import java.util.regex.Pattern;
 public class bruteForce implements Action {
     @Override
     public Result execute(String[] parameters)  {
-        Path path = Paths.get(parameters[0]);
-        Path path2 = Paths.get(parameters[1]);
+        Path path = Paths.get(parameters[1]);
+        Path path2 = Paths.get(parameters[0]);
         StringBuilder stringBuilder = new StringBuilder();
         byte[] bytes;
         try {
@@ -42,7 +42,7 @@ public class bruteForce implements Action {
                 "низо|об|обо|обез|обес|ото|па|пра|по|под|подо|пере|пре|пред|предо|при|про|раз|рас|разо|со|су|через|черес|чрез|ана|анти|архи|гипер|гипо|" +
                 "де|дез|дис|ин|интер|инфра|квази|кило|контр|макро|микро|мега|мата|мульти|орто|пан|пара|пост|прото|ре|суб|супер|транс|ультра|зкстра|сказ|экс\\w)");
 
-        Pattern patternEng = Pattern.compile("in|and|is|the|of|but|to|for");
+        Pattern patternEng = Pattern.compile("\\b(in|and|is|the|of|but|to|for)\\b");
 
         int dot;
         while (true) {
@@ -109,7 +109,7 @@ public class bruteForce implements Action {
                 countPrest = (countWords.length / result);
             }
 
-            if (resultEng >3||countPrest<7) {
+            if (resultEng >5||countPrest<7) {
                 //System.out.println(stringBuilder);
                 try {
                     Files.writeString(path2,stringBuilder);
