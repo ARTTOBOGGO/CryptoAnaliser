@@ -9,13 +9,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class bruteForce implements Action {
+public class BruteForce implements Action {
     @Override
     public Result execute(String[] parameters)  {
         Path path = Paths.get(parameters[1]);
@@ -31,16 +28,14 @@ public class bruteForce implements Action {
 
         int count=1;
         int countPrest =100;
-        char[] alphubet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toCharArray();
-        char[] alphubetTop = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toUpperCase().toCharArray();
-        char[] alphubetEng = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        char[] alphubetEngTop = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
+        char[] alphubet = Strings.rus.toCharArray();
+        char[] alphubetTop = Strings.rus.toUpperCase().toCharArray();
+        char[] alphubetEng = Strings.eng.toCharArray();
+        char[] alphubetEngTop = Strings.eng.toUpperCase().toCharArray();
         char[] strings = str1.toCharArray();
         String[] countWords = str1.split(" ");
 
-        Pattern pattern = Pattern.compile("\\b(мо|без|бес|во|воз|вос|возо|вз|вс|вы|до|за|из|изо|на|наи|недо|над|надо|не|низ|нис|" +
-                "низо|об|обо|обез|обес|ото|па|пра|по|под|подо|пере|пре|пред|предо|при|про|раз|рас|разо|со|су|через|черес|чрез|ана|анти|архи|гипер|гипо|" +
-                "де|дез|дис|ин|интер|инфра|квази|кило|контр|макро|микро|мега|мата|мульти|орто|пан|пара|пост|прото|ре|суб|супер|транс|ультра|зкстра|сказ|экс\\w)");
+        Pattern pattern = Pattern.compile("\\b"+Strings.patternsStr+"\\w");
 
         Pattern patternEng = Pattern.compile("\\b(in|and|is|the|of|but|to|for)\\b");
 
@@ -56,7 +51,7 @@ public class bruteForce implements Action {
                             dot = j;
                         }
                         strings[i] = alphubet[dot];
-                        // stringBuilder.append(strings[i]);
+
 
                     } else if ((int) strings[i] == (int) alphubetTop[j]) {
                         dot = j-count;
@@ -65,7 +60,7 @@ public class bruteForce implements Action {
                             dot = j;
                         }
                         strings[i] = alphubetTop[dot];
-                        //stringBuilder.append(strings[i]);
+
 
                     }
 
@@ -82,7 +77,7 @@ public class bruteForce implements Action {
                             dot = j;
                         }
                         strings[i] = alphubetEng[dot];
-                        //stringBuilder.append(strings[i]);
+
 
                     } else if ((int) strings[i] == (int) alphubetEngTop[j]) {
                         dot = j-count;
@@ -91,7 +86,7 @@ public class bruteForce implements Action {
                             dot = j;
                         }
                         strings[i] = alphubetEngTop[dot];
-                        //stringBuilder.append(strings[i]);
+
 
                     }
                 }
@@ -110,20 +105,17 @@ public class bruteForce implements Action {
             }
 
             if (resultEng >5||countPrest<7) {
-                //System.out.println(stringBuilder);
                 try {
                     Files.writeString(path2,stringBuilder);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                //System.out.println(countPrest);
                 break;
             }
 
             stringBuilder.delete(0,str1.length());
 
         }
-        //System.out.println(matcher.results().count());
         return new Result(ResultCode.OK,"Перевел.");
     }
 }

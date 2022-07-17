@@ -3,12 +3,12 @@ package ru.javarush.cryptoanaliser.bogdanov.controller;
 import ru.javarush.cryptoanaliser.bogdanov.comands.Action;
 import ru.javarush.cryptoanaliser.bogdanov.comands.Decoder;
 import ru.javarush.cryptoanaliser.bogdanov.comands.Encoder;
-import ru.javarush.cryptoanaliser.bogdanov.comands.bruteForce;
+import ru.javarush.cryptoanaliser.bogdanov.comands.BruteForce;
 
 public enum Actions {
     ENCODER(new Encoder()),
     DECODER(new Decoder()),
-    BRUTEFORCE(new bruteForce());
+    BRUTEFORCE(new BruteForce());
 
     private final Action action;
 

@@ -1,5 +1,6 @@
 package ru.javarush.cryptoanaliser.bogdanov.comands;
 
+import ru.javarush.cryptoanaliser.bogdanov.constants.Strings;
 import ru.javarush.cryptoanaliser.bogdanov.entity.Result;
 import ru.javarush.cryptoanaliser.bogdanov.entity.ResultCode;
 
@@ -26,12 +27,12 @@ public class Encoder implements Action{
         }
         String str1 = new String(bytes, StandardCharsets.UTF_8);
 
-        int count=5;
+        int count= Integer.parseInt(parameters[2]);
         int countPrest =100;
-        char[] alphubet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toCharArray();
-        char[] alphubetTop = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toUpperCase().toCharArray();
-        char[] alphubetEng = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        char[] alphubetEngTop = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
+        char[] alphubet = Strings.rus.toCharArray();
+        char[] alphubetTop = Strings.rus.toUpperCase().toCharArray();
+        char[] alphubetEng = Strings.eng.toCharArray();
+        char[] alphubetEngTop = Strings.eng.toUpperCase().toCharArray();
         char[] strings = str1.toCharArray();
         String[] countWords = str1.split(" ");
 
@@ -104,4 +105,5 @@ public class Encoder implements Action{
         }
         return new Result(ResultCode.OK,"Перевел.");
     }
+
 }
