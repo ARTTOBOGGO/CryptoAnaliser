@@ -93,11 +93,11 @@ public class Decoder implements Action{
 
             try {
                 Files.writeString(path2, stringBuilder);
+                return new Result(ResultCode.OK,"Перевел");
             } catch (IOException e) {
-                throw new RuntimeException(e);
+               return  new Result(ResultCode.ERROR,"Ошибка");
             }
 
-        return new Result(ResultCode.OK,"Перевел");
 
     }
 }
