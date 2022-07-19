@@ -84,14 +84,14 @@ public class Statistics implements Action{
 
         countLetter(chars, treeMap);
         countLetter(chars2, treeMap2);
-        System.out.println(treeMap);
-        System.out.println(treeMap2);
+//        System.out.println(treeMap);
+//        System.out.println(treeMap2);
 
         for (Map.Entry<Character, Double> chars : treeMap.entrySet()) {//первый map
             List<Character> fl = nearset(chars.getValue(), treeMap2); //получение сопостовимого или близкого символа
             treeMapStr.put(chars.getKey(), fl);
         }
-        System.out.println(treeMapStr);
+        //System.out.println(treeMapStr);
 
         replace();
         try {
@@ -118,7 +118,7 @@ public class Statistics implements Action{
     public static void countLetter(char[] chars, Map<Character, Double> treeMap) {//частотность букв
         long count = 0;
         for (char c : alphubet) {
-            double dob = 0;
+            double dob ;
             int lenght;
             double oneProsent;
             for (char aChar : chars) {
@@ -135,7 +135,7 @@ public class Statistics implements Action{
 
                 count = 0;
             }
-            System.out.println(c + "--" + dob + "%");
+            //System.out.println(c + "--" + dob + "%");
         }
 
     }
@@ -155,7 +155,7 @@ public class Statistics implements Action{
         for(Map.Entry<Character, Double> m : map.entrySet()){
             double modul = Math.abs(n - m.getValue());
 
-            if(modul<=value+0.05 && modul>=value-0.05){
+            if(modul<=value+0.02 && modul>=value-0.02){
                 list.add(m.getKey());
             }
         }

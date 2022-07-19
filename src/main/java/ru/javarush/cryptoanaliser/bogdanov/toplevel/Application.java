@@ -24,8 +24,11 @@ public class Application {
         System.out.println(" 1.Decoder \n 2 Encoder \n 3 BruteForce \n 4 Statistics");
         int oper = Integer.parseInt(scanner.nextLine());
         String operation = choiceOperation(oper);
+        System.out.println("Enter the file to be processed");
         String pathOfFileFrom = scanner.nextLine();
+        System.out.println("File where to put the finished text");
         String pathOfFileTo = scanner.nextLine();
+        System.out.println("File step for encoding and decoding");
         String step = scanner.nextLine();
 
 
@@ -54,7 +57,7 @@ public class Application {
             intValue = Integer.parseInt(string);
             return true;
         } catch (NumberFormatException e) {
-            throw new ApplicationExeption("Input String cannot be parsed to Integer.");
+            return false;
         }
     }
     public void checkSourspathOnExists(String pathOfFileFrom,String[] args){
@@ -79,9 +82,9 @@ public class Application {
         }
     }
     public void checkStep(String step,String[] args){
-        if (checkIsNumberStep(step) && Integer.parseInt(step) >= 0) {
+        if (!step.equals("") && checkIsNumberStep(step)){//(checkIsNumberStep(step) && Integer.parseInt(step) >= 0
             parametrs[2] = step;
-        } else if (step.equals("")) {
+        } else if (!checkIsNumberStep(step)) {
             parametrs[2] = args[3];
         }else {
             throw new ApplicationExeption("Enter the positiv number");
