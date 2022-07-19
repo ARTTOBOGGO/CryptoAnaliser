@@ -52,9 +52,9 @@ public class Application {
     }
 
     public boolean checkIsNumberStep(String string) {
-        int intValue;
+        int intValues;
         try {
-            intValue = Integer.parseInt(string);
+            intValues = Integer.parseInt(string);
             return true;
         } catch (NumberFormatException e) {
             return false;
